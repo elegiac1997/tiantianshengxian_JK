@@ -75,14 +75,10 @@
 </div>
 
 <div class="center_con clearfix">
-    <ul class="subnav fl">
-        <li><a href="#model01" class="fruit">新鲜水果</a></li>
-        <li><a href="#model02" class="seafood">海鲜水产</a></li>
-        <li><a href="#model03" class="meet">猪牛羊肉</a></li>
-        <li><a href="#model04" class="egg">禽类蛋品</a></li>
-        <li><a href="#model05" class="vegetables">新鲜蔬菜</a></li>
-        <li><a href="#model06" class="ice">速冻食品</a></li>
-    </ul>
+    <div id="goodsType_div">
+
+    </div>
+
     <div class="slide fl">
         <ul class="slide_pics">
             <li><img src="${pageContext.request.contextPath}/images/slide.jpg" alt="幻灯片"></li>
@@ -99,239 +95,10 @@
         <a href="#"><img src="${pageContext.request.contextPath}/images/adv02.jpg"></a>
     </div>
 </div>
+<div id="goods_list">
 
-<div class="list_model">
-    <div class="list_title clearfix">
-        <h3 class="fl" id="model01">新鲜水果</h3>
-        <div class="subtitle fl">
-            <span>|</span>
-            <a href="#">鲜芒</a>
-            <a href="#">加州提子</a>
-            <a href="#">亚马逊牛油果</a>
-        </div>
-        <a href="list.jsp" class="goods_more fr" id="fruit_more">查看更多 ></a>
-    </div>
-
-    <div class="goods_con clearfix">
-        <div class="goods_banner fl"><img src="${pageContext.request.contextPath}/images/banner01.jpg"></div>
-        <ul class="goods_list fl">
-            <li>
-                <h4><a href="#">草莓</a></h4>
-                <a href="detail.html"><img src="${pageContext.request.contextPath}/images/goods/goods003.jpg"></a>
-                <div class="prize">¥ 30.00</div>
-            </li>
-            <li>
-                <h4><a href="#">葡萄</a></h4>
-                <a href="detail.html"><img src="${pageContext.request.contextPath}/images/goods/goods002.jpg"></a>
-                <div class="prize">¥ 5.50</div>
-            </li>
-            <li>
-                <h4><a href="#">柠檬</a></h4>
-                <a href="detail.html"><img src="${pageContext.request.contextPath}/images/goods/goods001.jpg"></a>
-                <div class="prize">¥ 3.90</div>
-            </li>
-            <li>
-                <h4><a href="#">奇异果</a></h4>
-                <a href="detail.html"><img src="${pageContext.request.contextPath}/images/goods/goods012.jpg"></a>
-                <div class="prize">¥ 25.80</div>
-            </li>
-        </ul>
-    </div>
 </div>
 
-<div class="list_model">
-    <div class="list_title clearfix">
-        <h3 class="fl" id="model02">海鲜水产</h3>
-        <div class="subtitle fl">
-            <span>|</span>
-            <a href="#">河虾</a>
-            <a href="#">扇贝</a>
-        </div>
-        <a href="list.jsp" class="goods_more fr">查看更多 ></a>
-    </div>
-
-    <div class="goods_con clearfix">
-        <div class="goods_banner fl"><img src="${pageContext.request.contextPath}/images/banner02.jpg"></div>
-        <ul class="goods_list fl">
-            <li>
-                <h4><a href="#">青岛野生海捕大青虾</a></h4>
-                <a href="detail.html"><img src="${pageContext.request.contextPath}/images/goods/goods018.jpg"></a>
-                <div class="prize">¥ 48.00</div>
-            </li>
-            <li>
-                <h4><a href="#">扇贝</a></h4>
-                <a href="detail.html"><img src="${pageContext.request.contextPath}/images/goods/goods019.jpg"></a>
-                <div class="prize">¥ 46.00</div>
-            </li>
-            <li>
-                <h4><a href="#">冷冻秋刀鱼</a></h4>
-                <a href="detail.html"><img src="${pageContext.request.contextPath}/images/goods/goods020.jpg"></a>
-                <div class="prize">¥ 19.00</div>
-            </li>
-            <li>
-                <h4><a href="#">基围虾</a></h4>
-                <a href="detail.html"><img src="${pageContext.request.contextPath}/images/goods/goods021.jpg"></a>
-                <div class="prize">¥ 25.00</div>
-            </li>
-        </ul>
-    </div>
-</div>
-
-<div class="list_model">
-    <div class="list_title clearfix">
-        <h3 class="fl" id="model03">猪牛羊肉</h3>
-        <div class="subtitle fl">
-            <span>|</span>
-            <a href="#">鲜芒</a>
-            <a href="#">加州提子</a>
-            <a href="#">亚马逊牛油果</a>
-        </div>
-        <a href="list.jsp" class="goods_more fr">查看更多 ></a>
-    </div>
-
-    <div class="goods_con clearfix">
-        <div class="goods_banner fl"><img src="${pageContext.request.contextPath}/images/banner03.jpg"></div>
-        <ul class="goods_list fl">
-            <li>
-                <h4><a href="#">维多利亚葡萄维多利亚葡萄维多利亚葡萄维多利亚葡萄</a></h4>
-                <a href="detail.html"><img src="${pageContext.request.contextPath}/images/goods.jpg"></a>
-                <div class="prize">¥ 38.00</div>
-            </li>
-            <li>
-                <h4><a href="#">维多利亚葡萄</a></h4>
-                <a href="detail.html"><img src="${pageContext.request.contextPath}/images/goods.jpg"></a>
-                <div class="prize">¥ 38.00</div>
-            </li>
-            <li>
-                <h4><a href="#">维多利亚葡萄</a></h4>
-                <a href="detail.html"><img src="${pageContext.request.contextPath}/images/goods.jpg"></a>
-                <div class="prize">¥ 38.00</div>
-            </li>
-            <li>
-                <h4><a href="#">维多利亚葡萄</a></h4>
-                <a href="detail.html"><img src="${pageContext.request.contextPath}/images/goods.jpg"></a>
-                <div class="prize">¥ 38.00</div>
-            </li>
-        </ul>
-    </div>
-</div>
-
-<div class="list_model">
-    <div class="list_title clearfix">
-        <h3 class="fl" id="model04">禽类蛋品</h3>
-        <div class="subtitle fl">
-            <span>|</span>
-            <a href="#">鲜芒</a>
-            <a href="#">加州提子</a>
-            <a href="#">亚马逊牛油果</a>
-        </div>
-        <a href="list.jsp" class="goods_more fr">查看更多 ></a>
-    </div>
-
-    <div class="goods_con clearfix">
-        <div class="goods_banner fl"><img src="${pageContext.request.contextPath}/images/banner04.jpg"></div>
-        <ul class="goods_list fl">
-            <li>
-                <h4><a href="#">维多利亚葡萄维多利亚葡萄维多利亚葡萄维多利亚葡萄</a></h4>
-                <a href="detail.html"><img src="${pageContext.request.contextPath}/images/goods.jpg"></a>
-                <div class="prize">¥ 38.00</div>
-            </li>
-            <li>
-                <h4><a href="#">维多利亚葡萄</a></h4>
-                <a href="detail.html"><img src="${pageContext.request.contextPath}/images/goods.jpg"></a>
-                <div class="prize">¥ 38.00</div>
-            </li>
-            <li>
-                <h4><a href="#">维多利亚葡萄</a></h4>
-                <a href="detail.html"><img src="${pageContext.request.contextPath}/images/goods.jpg"></a>
-                <div class="prize">¥ 38.00</div>
-            </li>
-            <li>
-                <h4><a href="#">维多利亚葡萄</a></h4>
-                <a href="detail.html"><img src="${pageContext.request.contextPath}/images/goods.jpg"></a>
-                <div class="prize">¥ 38.00</div>
-            </li>
-        </ul>
-    </div>
-</div>
-
-<div class="list_model">
-    <div class="list_title clearfix">
-        <h3 class="fl" id="model05">新鲜蔬菜</h3>
-        <div class="subtitle fl">
-            <span>|</span>
-            <a href="#">鲜芒</a>
-            <a href="#">加州提子</a>
-            <a href="#">亚马逊牛油果</a>
-        </div>
-        <a href="list.jsp" class="goods_more fr">查看更多 ></a>
-    </div>
-
-    <div class="goods_con clearfix">
-        <div class="goods_banner fl"><img src="${pageContext.request.contextPath}/images/banner05.jpg"></div>
-        <ul class="goods_list fl">
-            <li>
-                <h4><a href="#">维多利亚葡萄维多利亚葡萄维多利亚葡萄维多利亚葡萄</a></h4>
-                <a href="detail.html"><img src="${pageContext.request.contextPath}/images/goods.jpg"></a>
-                <div class="prize">¥ 38.00</div>
-            </li>
-            <li>
-                <h4><a href="#">维多利亚葡萄</a></h4>
-                <a href="detail.html"><img src="images/goods.jpg"></a>
-                <div class="prize">¥ 38.00</div>
-            </li>
-            <li>
-                <h4><a href="#">维多利亚葡萄</a></h4>
-                <a href="detail.html"><img src="images/goods.jpg"></a>
-                <div class="prize">¥ 38.00</div>
-            </li>
-            <li>
-                <h4><a href="#">维多利亚葡萄</a></h4>
-                <a href="detail.html"><img src="images/goods.jpg"></a>
-                <div class="prize">¥ 38.00</div>
-            </li>
-        </ul>
-    </div>
-</div>
-
-<div class="list_model">
-    <div class="list_title clearfix">
-        <h3 class="fl" id="model06">速冻食品</h3>
-        <div class="subtitle fl">
-            <span>|</span>
-            <a href="#">鲜芒</a>
-            <a href="#">加州提子</a>
-            <a href="#">亚马逊牛油果</a>
-        </div>
-        <a href="list.jsp" class="goods_more fr">查看更多 ></a>
-    </div>
-
-    <div class="goods_con clearfix">
-        <div class="goods_banner fl"><img src="images/banner06.jpg"></div>
-        <ul class="goods_list fl">
-            <li>
-                <h4><a href="#">维多利亚葡萄维多利亚葡萄维多利亚葡萄维多利亚葡萄</a></h4>
-                <a href="detail.html"><img src="images/goods.jpg"></a>
-                <div class="prize">¥ 38.00</div>
-            </li>
-            <li>
-                <h4><a href="#">维多利亚葡萄</a></h4>
-                <a href="detail.html"><img src="images/goods.jpg"></a>
-                <div class="prize">¥ 38.00</div>
-            </li>
-            <li>
-                <h4><a href="#">维多利亚葡萄</a></h4>
-                <a href="detail.html"><img src="images/goods.jpg"></a>
-                <div class="prize">¥ 38.00</div>
-            </li>
-            <li>
-                <h4><a href="#">维多利亚葡萄</a></h4>
-                <a href="detail.html"><img src="images/goods.jpg"></a>
-                <div class="prize">¥ 38.00</div>
-            </li>
-        </ul>
-    </div>
-</div>
 
 <div class="footer">
     <div class="foot_link">
@@ -347,6 +114,10 @@
     <p>电话：010-****888    京ICP备*******8号</p>
 </div>
 <script type="text/javascript" src="js/slideshow.js"></script>
+<script type="text/javascript">
+    $("#goodsType_div").load("${pageContext.request.contextPath}/goods/typelist");
+    $("#goods_list").load("${pageContext.request.contextPath}/goods/sgoods");
+</script>
 <script type="text/javascript">
     BCSlideshow('focuspic');
     var oFruit = document.getElementById('fruit_more');
