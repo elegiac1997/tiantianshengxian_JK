@@ -17,4 +17,5 @@ public class ShowGoods {
    private String bannerpath;
    private String price;
    private Date creattime;
+   private String unitprice;
 }

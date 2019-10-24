@@ -22,7 +22,7 @@
                 <a href="#">加州提子</a>
                 <a href="#">亚马逊牛油果</a>
             </div>
-            <a class="goods_more fr" id="fruit_more" href="list.html">查看更多 &gt;</a>
+            <a class="goods_more fr" id="fruit_more" href="${pageContext.request.contextPath}/goods/list">查看更多 &gt;</a>
         </div>
 
         <div class="goods_con clearfix">

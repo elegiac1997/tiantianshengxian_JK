@@ -55,7 +55,14 @@
         <!-- 别名 -->
         <property name="typeAliasesPackage" value="com.qf.pojo"/>
         <!-- 插件 -->
+        <!-- 分页插件pagehelper配置-->
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageInterceptor"></bean>
+            </array>
+        </property>
         <!-- 细节参数：settings -->
+
     </bean>
 
     <!-- MapperScannerConfigurer

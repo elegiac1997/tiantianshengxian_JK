@@ -1,11 +1,33 @@
+ <%@page import="java.util.List"%>
+ <%@page import="java.util.ArrayList"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+<%@ page isELIgnored="false" %>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<title>天天生鲜-商品列表</title>
-	<link rel="stylesheet" type="text/css" href="css/reset.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<%
+		String path = request.getContextPath();
+		String basePath = request.getScheme() + "://" + request.getServerName() + ":" +
+				request.getServerPort() + path + "/";
+	%>
+	<base href="<%=basePath%>">
+	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/reset.css">
+	<link rel="stylesheet" type="text/css" href="<%=basePath%>css/main.css">
+<%--	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css">--%>
+<%--	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css">--%>
+	<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="js/slide.js"></script>
+	<style>
+		#fenye {
+			display: block;
+			height: 500px;
+		}
+	</style>
 </head>
 <body>
 	<div class="header_con">
@@ -95,158 +117,69 @@
 
 		<div class="r_wrap fr clearfix">
 			<div class="sort_bar">
-				<a href="#" class="active">默认</a>
-				<a href="#">价格</a>
-				<a href="#">人气</a>
+				<a id="time_change">默认</a>
+				<a id="price_change">价格</a>
+				<a >人气</a>
 			</div>
 
-			<ul class="goods_type_list clearfix">
-				<li>
-					<a href="detail.html"><img src="images/goods/goods003.jpg"></a>
-					<h4><a href="detail.html">大兴大棚草莓</a></h4>
-					<div class="operate">
-						<span class="prize">￥16.80</span>
-						<span class="unit">16.80/500g</span>
-						<a href="#" class="add_goods" title="加入购物车"></a>
-					</div>
-				</li>
+			<div id="fylist">
+				<div id="fenye">
+					<ul id="goods_ul" class="goods_type_list clearfix">
+						<c:forEach items="${fylist}" var="fylist" varStatus="sta">
+							<li id="goods_asc" class="goods_li">
+								<a href="detail.html"><img src="${fylist.imgpath}"></a>
+								<h4><a href="detail.html">${fylist.gtitle}</a></h4>
+								<div class="operate">
+									<span class="prize">￥${fylist.price}</span>
+									<span class="unit">${fylist.unitprice}</span>
+									<a href="#" class="add_goods" title="加入购物车"></a>
+								</div>
+							</li>
 
-				<li>
-					<a href="#"><img src="images/goods/goods004.jpg"></a>
-					<h4><a href="#">吐鲁番梨光杏</a></h4>
-					<div class="operate">
-						<span class="prize">￥5.50</span>
-						<span class="unit">5.50/500g</span>
-						<a href="#" class="add_goods" title="加入购物车"></a>
-					</div>
-				</li>
+						</c:forEach>
 
-				<li>
-					<a href="#"><img src="images/goods/goods005.jpg"></a>
-					<h4><a href="#">黄肉桃</a></h4>
-					<div class="operate">
-						<span class="prize">￥10.00</span>
-						<span class="unit">10.00/500g</span>
-						<a href="#" class="add_goods" title="加入购物车"></a>
-					</div>
-				</li>
 
-				<li>
-					<a href="#"><img src="images/goods/goods006.jpg"></a>
-					<h4><a href="#">进口西梅</a></h4>
-					<div class="operate">
-						<span class="prize">￥28.80</span>
-						<span class="unit">28.8/500g</span>
-						<a href="#" class="add_goods" title="加入购物车"></a>
-					</div>
-				</li>
+						<c:forEach var="fylists"  items="${fylist}" varStatus="status">
+							<c:set var="startIndex" value="${fn:length(fylist) }"></c:set>
 
-				<li>
-					<a href="#"><img src="images/goods/goods007.jpg"></a>
-					<h4><a href="#">香梨</a></h4>
-					<div class="operate">
-						<span class="prize">￥6.45</span>
-						<span class="unit">6.45/500g</span>
-						<a href="#" class="add_goods" title="加入购物车"></a>
-					</div>
-				</li>
+						<li id="goods_desc" style="display: none;" class="goods_li">
+							<a href="detail.html"><img src="${fylist[startIndex - status.count].imgpath}"></a>
+							<h4><a href="detail.html">${fylist[startIndex - status.count].gtitle}</a></h4>
+							<div class="operate">
+								<span class="prize">￥${fylist[startIndex - status.count].price}</span>
+								<span class="unit">${fylist[startIndex - status.count].unitprice}</span>
+								<a href="#" class="add_goods" title="加入购物车"></a>
+							</div>
+						</li>
+						</c:forEach>
 
-				<li>
-					<a href="#"><img src="images/goods/goods008.jpg"></a>
-					<h4><a href="#">栗子</a></h4>
-					<div class="operate">
-						<span class="prize">￥9.50</span>
-						<span class="unit">9.50/500g</span>
-						<a href="#" class="add_goods" title="加入购物车"></a>
-					</div>
-				</li>
+					</ul>
+				</div>
 
-				<li>
-					<a href="#"><img src="images/goods/goods009.jpg"></a>
-					<h4><a href="#">海南香蕉</a></h4>
-					<div class="operate">
-						<span class="prize">￥3.30</span>
-						<span class="unit">3.30/500g</span>
-						<a href="#" class="add_goods" title="加入购物车"></a>
-					</div>
-				</li>
+				<div class="pagenation">
+					<c:if test="${page.hasPreviousPage}">
+						<a href="${pageContext.request.contextPath}/goods/list?pageNum=${page.prePage}">上一页</a>
+					</c:if>
+					<c:if test="${! page.hasPreviousPage}">
+						上一页
+					</c:if>
+					<a href="${pageContext.request.contextPath}/goods/list?pageNum=1" class="active">1</a>
+					<a href="${pageContext.request.contextPath}/goods/list?pageNum=2">2</a>
+					<a href="${pageContext.request.contextPath}/goods/list?pageNum=3">3</a>
+					<a href="${pageContext.request.contextPath}/goods/list?pageNum=4">4</a>
+					<a href="${pageContext.request.contextPath}/goods/list?pageNum=5">5</a>
 
-				<li>
-					<a href="#"><img src="images/goods/goods010.jpg"></a>
-					<h4><a href="#">青苹果</a></h4>
-					<div class="operate">
-						<span class="prize">￥5.00</span>
-						<span class="unit">5.00/500g</span>
-						<a href="#" class="add_goods" title="加入购物车"></a>
-					</div>
-				</li>
+					<c:if test="${page.hasNextPage}">
+						<a href="${pageContext.request.contextPath}/goods/list?pageNum=${page.nextPage}">下一页></a>
+					</c:if>
+					<c:if test="${! page.hasNextPage}">下一页</c:if>
 
-				<li>
-					<a href="#"><img src="images/goods/goods011.jpg"></a>
-					<h4><a href="#">山莓</a></h4>
-					<div class="operate">
-						<span class="prize">￥28.80</span>
-						<span class="unit">28.8/500g</span>
-						<a href="#" class="add_goods" title="加入购物车"></a>
-					</div>
-				</li>
+				</div>
+				<script>
 
-				<li>
-					<a href="#"><img src="images/goods/goods012.jpg"></a>
-					<h4><a href="#">奇异果</a></h4>
-					<div class="operate">
-						<span class="prize">￥25.80</span>
-						<span class="unit">25.8/500g</span>
-						<a href="#" class="add_goods" title="加入购物车"></a>
-					</div>
-				</li>
-				<li>
-					<a href="#"><img src="images/goods/goods013.jpg"></a>
-					<h4><a href="#">蜜桔</a></h4>
-					<div class="operate">
-						<span class="prize">￥4.80</span>
-						<span class="unit">4.8/500g</span>
-						<a href="#" class="add_goods" title="加入购物车"></a>
-					</div>
-				</li>
-				<li>
-					<a href="#"><img src="images/goods/goods014.jpg"></a>
-					<h4><a href="#">脐橙</a></h4>
-					<div class="operate">
-						<span class="prize">￥3.50</span>
-						<span class="unit">3.50/500g</span>
-						<a href="#" class="add_goods" title="加入购物车"></a>
-					</div>
-				</li>
-				<li>
-					<a href="#"><img src="images/goods/goods001.jpg"></a>
-					<h4><a href="#">进口柠檬</a></h4>
-					<div class="operate">
-						<span class="prize">￥3.90</span>
-						<span class="unit">3.90/500g</span>
-						<a href="#" class="add_goods" title="加入购物车"></a>
-					</div>
-				</li>
-				<li>
-					<a href="#"><img src="images/goods/goods002.jpg"></a>
-					<h4><a href="#">玫瑰香葡萄</a></h4>
-					<div class="operate">
-						<span class="prize">￥16.80</span>
-						<span class="unit">16.80/500g</span>
-						<a href="#" class="add_goods" title="加入购物车"></a>
-					</div>
-				</li>
-			</ul>
-
-			<div class="pagenation">
-				<a href="#"><上一页</a>
-				<a href="#" class="active">1</a>
-				<a href="#">2</a>
-				<a href="#">3</a>
-				<a href="#">4</a>
-				<a href="#">5</a>
-				<a href="#">下一页></a>
+				</script>
 			</div>
+
 		</div>
 	</div>
 
@@ -263,6 +196,82 @@
 		<p>CopyRight © 2016 北京天天生鲜信息技术有限公司 All Rights Reserved</p>
 		<p>电话：010-****888    京ICP备*******8号</p>
 	</div>
+	<script type="text/javascript">
+		// var timestatus =
+		<%--var t1='<%=request.getAttribute("fylist")%>';--%>
+		<%--var t2 = [];--%>
+		// var num = 0;
+		// var timechange = "desc";
+		$("#time_change").click(
+				function () {
+					$("#time_change").attr("class","active");
+					$("#price_change").attr("class","");
+					var timechange="<%=session.getAttribute("timechange")%>";
+					// alert(timechange+"1");
+					if (timechange == "asc") {
+
+						$.ajax({
+							url:"${pageContext.request.contextPath}/goods/list",
+							data:"timechange="+"desc",
+							type:"get",
+							success:function () {
+								window.location.replace("${pageContext.request.contextPath}/goods/list?timechange=desc");
+							}
+						})
+						<%--timechange="<%=session.setAttribute("timechange","asc")%>";--%>
+						// timechange="asc";
+						// alert(timechange+"2");
+					}else {
+						$.ajax({
+							url:"${pageContext.request.contextPath}/goods/list",
+							data:"timechange="+"asc",
+							type:"get",
+							success:function () {
+								window.location.replace("${pageContext.request.contextPath}/goods/list?timechange=asc");
+							}
+						})
+						// timechange="desc";
+						// alert(timechange+"3");
+					}
+				}
+		)
+		$("#price_change").click(
+				function () {
+					$("#time_change").attr("class","");
+					$("#price_change").attr("class","active");
+					var timechange="<%=session.getAttribute("timechange")%>";
+					// alert(timechange+"1");
+					if (timechange == "price_asc") {
+
+						$.ajax({
+							url:"${pageContext.request.contextPath}/goods/list",
+							data:"timechange="+"price_desc",
+							type:"get",
+							success:function () {
+								window.location.replace("${pageContext.request.contextPath}/goods/list?timechange=price_desc");
+							}
+						})
+						<%--timechange="<%=session.setAttribute("timechange","asc")%>";--%>
+						// timechange="asc";
+						// alert(timechange+"2");
+					}else {
+						$.ajax({
+							url:"${pageContext.request.contextPath}/goods/list",
+							data:"timechange="+"price_asc",
+							type:"get",
+							success:function () {
+								window.location.replace("${pageContext.request.contextPath}/goods/list?timechange=price_asc");
+							}
+						})
+						// timechange="desc";
+						// alert(timechange+"3");
+					}
+				}
+		)
+	</script>
+<%--<script type="text/javascript">--%>
+<%--	//$("#fylist").load("${pageContext.request.contextPath}/goods/fylist");--%>
+<%--</script>--%>
 	
 </body>
 </html>

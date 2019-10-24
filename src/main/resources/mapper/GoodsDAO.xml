@@ -45,6 +45,12 @@
         on g.goodsid = gl.gid
     </select>
 
+    <select id="selectAll_fruit" resultType="ShowGoods">
+        select *
+        from goodslist
+        order by creattime desc
+    </select>
+
     <select id="selectGoodsList" resultType="Goods">
         select *
         from `goods`

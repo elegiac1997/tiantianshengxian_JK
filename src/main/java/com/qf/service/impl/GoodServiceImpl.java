@@ -3,6 +3,7 @@ package com.qf.service.impl;
 import com.qf.dao.GoodsDAO;
 import com.qf.pojo.Goods;
 import com.qf.pojo.GoodsList;
+import com.qf.pojo.ShowGoods;
 import com.qf.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,5 +31,10 @@ public class GoodServiceImpl implements GoodsService {
     @Override
     public List<GoodsList> selectA() {
         return goodsDAO.selectA();
+    }
+
+    @Override
+    public List<ShowGoods> selectAll_fruit() {
+        return goodsDAO.selectAll_fruit();
     }
 }

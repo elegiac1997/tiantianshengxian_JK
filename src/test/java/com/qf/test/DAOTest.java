@@ -1,5 +1,7 @@
 package com.qf.test;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.qf.dao.GoodsDAO;
 import com.qf.dao.UserDAO;
 import com.qf.pojo.Goods;
@@ -49,10 +51,15 @@ public class DAOTest {
 //
 //        }
         //System.out.println(goodsDAO.selectALL().toString());
-        List<Goods> goodsLists = goodsDAO.selectALL();
-        for (Goods goodsList : goodsLists) {
-            System.out.println(goodsList);
-        }
+//        List<Goods> goodsLists = goodsDAO.selectALL();
+//        for (Goods goodsList : goodsLists) {
+//            System.out.println(goodsList);
+//        }
+
+//        List<GoodsList> goodsLists = goodsDAO.selectAll_fruit();
+//        for (GoodsList goodsList : goodsLists) {
+//            System.out.println(goodsList);
+//        }
     }
 
     @Test
@@ -65,6 +72,21 @@ public class DAOTest {
             System.out.println(goods);
         }
         System.out.println(goodsService.selectGoodsList());
+    }
+    @Test
+    public void fenyetest(){
+        PageHelper.startPage(1,3);
+        PageHelper.orderBy("creattime");
+        List<ShowGoods> showGoods = goodsDAO.selectAll_fruit();
+        PageInfo<ShowGoods> p = new PageInfo<ShowGoods>(showGoods);
+        for (ShowGoods showGood : showGoods) {
+            System.out.println(showGood);
+        }
+        System.out.println("---------------------");
+        System.out.println(p.getPages());
+        System.out.println(p.getPageSize());
+        System.out.println(p.getPageNum());
+
     }
 
 
