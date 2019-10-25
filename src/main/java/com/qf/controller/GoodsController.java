@@ -25,8 +25,8 @@ public class GoodsController {
 
     @Autowired
     private GoodsService goodsService;
-
-    private Integer timestatus = 0;
+//
+//    private Integer timestatus = 0;
 
     @GetMapping("/typelist")
     public String selectGoodsType(HttpServletRequest request){
@@ -43,10 +43,22 @@ public class GoodsController {
         return "showgoods";
     }
 
+    @GetMapping("/goodsmessage")
+    public String selectGoodsMessage(String sendgtitle,HttpServletRequest request){
+        System.out.println(sendgtitle+"-----------===========-----------======");
+        System.out.println(goodsService.selectByGtitle(sendgtitle));
+        List<ShowGoods> goodsmessage = goodsService.selectByGtitle(sendgtitle);
+        request.setAttribute("goodsmessage",goodsmessage);
+        return "detail";
+    }
+
 
     @GetMapping("/list")
     public String selectAll_fruit(String timechange,HttpServletRequest request){
 //        System.out.println(timechange+"--------------------------");
+//        System.out.println(request.getUserPrincipal().getName()+"获取用户名------------");
+
+
         if (timechange==null){
             timechange = "desc";
         }
@@ -71,7 +83,7 @@ public class GoodsController {
 
 
         PageHelper.startPage(pageNum,pageSize);
-        System.out.println("====================="+timechange);
+//        System.out.println("====================="+timechange);
 //        PageHelper.orderBy("creattime "+timechange);
         if (timechange.equals("asc")){
             PageHelper.orderBy("creattime asc");

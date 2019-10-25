@@ -8,6 +8,7 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.apache.shiro.subject.Subject;
+import org.apache.shiro.web.servlet.SimpleCookie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -55,16 +56,17 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String login(User user,String checkboxr){
+    public String login(String checkboxr,User user) throws Exception{
         if (checkboxr!=null){
             kkk = checkboxr;
             System.out.println("------------"+kkk);
         }
         String u = user.getUsername();
         String regExp = "^[a-z0-9][\\w\\.\\-]*@[a-z0-9\\-]+(\\.[a-z]{2,5}){1,2}$";
-        Pattern p = Pattern.compile(regExp);
-        Matcher m = p.matcher(u);
-        if (m.matches()){
+//        Pattern p = Pattern.compile(regExp);
+//        Matcher m = p.matcher(u);
+//        if (m.matches()){
+        if (Pattern.compile(regExp).matcher(u).matches()){
             System.out.println(kkk+"-------------------------------");
             System.out.println("使用邮箱登录-------");
             //获取subject 调用login
@@ -76,6 +78,9 @@ public class UserController {
                 System.out.println("开启记住我");
                 //记住我
                 token.setRememberMe(true);
+                SimpleCookie simpleCookie =new SimpleCookie("remembershiro");
+                simpleCookie.setHttpOnly(true);
+                simpleCookie.setMaxAge(3*60*60);
             }
             // 登录失败会抛出异常，则交由异常解析器处理
             subject.login(token);
@@ -91,14 +96,33 @@ public class UserController {
                 System.out.println("开启记住我");
                 //记住我
                 token.setRememberMe(true);
+                SimpleCookie simpleCookie =new SimpleCookie("remembershiro");
+                simpleCookie.setHttpOnly(true);
+                simpleCookie.setMaxAge(3*60*60);
             }
 
             // 登录失败会抛出异常，则交由异常解析器处理
-
-            subject.login(token);
+            try {
+                subject.login(token);
+            }catch (Exception e){
+                return "login";
+            }
             return "index";
         }
+//        Subject subject = SecurityUtils.getSubject();
+//        //创建登录用的令牌
+//        UsernamePasswordToken token = new UsernamePasswordToken(username,password);
+//        token.setRememberMe(true);//记住我
+//
+//        subject.login(token);
+//        return "index";
+    }
 
+
+    @RequestMapping("/logout")
+    public String logout(){
+        SecurityUtils.getSubject().logout();
+        return "login";
     }
 
 

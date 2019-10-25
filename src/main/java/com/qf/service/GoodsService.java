@@ -11,4 +11,5 @@ public interface GoodsService {
     List<Goods> selectALL();
     List<GoodsList> selectA();
     List<ShowGoods> selectAll_fruit();
+    List<ShowGoods> selectByGtitle(String gtitle);
 }

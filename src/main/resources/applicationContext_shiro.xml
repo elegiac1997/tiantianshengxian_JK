@@ -57,7 +57,7 @@
 <!--        <property name="template" ref="redisTemplate"/>-->
 <!--    </bean>-->
 
-    <!-- SessionManager,使用Shiro的DefaultWebSessionManager即可，其中注入自定义的SessionDAO -->
+<!--     SessionManager,使用Shiro的DefaultWebSessionManager即可，其中注入自定义的SessionDAO-->
 <!--    <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">-->
 <!--        &lt;!&ndash; 注册SessionDAO,负责将Session对象存入redis &ndash;&gt;-->
 <!--        <property name="sessionDAO">-->

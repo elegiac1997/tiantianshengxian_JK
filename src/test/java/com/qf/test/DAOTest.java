@@ -2,12 +2,10 @@ package com.qf.test;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.qf.dao.CartDAO;
 import com.qf.dao.GoodsDAO;
 import com.qf.dao.UserDAO;
-import com.qf.pojo.Goods;
-import com.qf.pojo.GoodsList;
-import com.qf.pojo.ShowGoods;
-import com.qf.pojo.User;
+import com.qf.pojo.*;
 import com.qf.service.GoodsService;
 import com.qf.service.userService;
 import org.junit.Test;
@@ -26,6 +24,8 @@ public class DAOTest {
     private UserDAO userDAO;
     @Autowired
     private GoodsDAO goodsDAO;
+    @Autowired
+    private CartDAO cartDAO;
 
     @Autowired
     private userService userService;
@@ -60,6 +60,12 @@ public class DAOTest {
 //        for (GoodsList goodsList : goodsLists) {
 //            System.out.println(goodsList);
 //        }
+        //System.out.println(goodsDAO.selectByGtitle("青苹果"));
+//
+
+        cartDAO.insertGoodsToCart(6,5,6);
+
+//        System.out.println(cartDAO.selectCartByUsername("jiankun1997").toString());
     }
 
     @Test

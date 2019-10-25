@@ -1,74 +1,29 @@
-
-    <%@page import="com.qf.pojo.Person"%>
-    <%@page import="java.util.List"%>
-    <%@page import="java.util.ArrayList"%>
-    <%@ page language="java" contentType="text/html; charset=UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-    
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%
-
-    List<Person> persons = new ArrayList<Person>();
-    Person person1 = new Person();
-    person1.setAge(12);
-     person1.setName("小明");
-    persons.add(person1);
-    Person person2 = new Person();
-     person2.setAge(13);
-     person2.setName("阿飞");
-   persons.add(person2);
-    request.setAttribute("persons", persons);
-
-
-%>
-    <html>
-    <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>JSTL逆序循环</title>
-    </head>
-    <body>
-        <div>正序</div>
-    <div>
-                <table>
-                    <thead>
-                    <tr>
-                            <th>年龄</th>
-                            <th>姓名</th>
-                        </tr>
-                </thead>
-                    <tbody>
-                    <c:forEach var="person" items="${persons }">
-                            <tr>
-                                <td>${person.age }</td>
-                                <td>${person.name }</td>
-                        </tr>
-                        </c:forEach>
-                </tbody>
-                </table>
-            </div>
-        <br />
-    <div>逆序</div>
-        <div>
-                <table>
-                    <thead>
-                    <tr>
-                            <th>年龄</th>
-                            <th>姓名</th>
-                        </tr>
-                </thead>
-                    <tbody>
-                    <c:set var="startIndex" value="${fn:length(persons)-1 }"></c:set>
-                    <c:forEach var="person" items="${persons }" varStatus="status">
-                            <tr>
-                                <td>${persons[startIndex - status.index].age }</td>
-                                <td>${persons[startIndex - status.index].name }</td>
-                            </tr>
-                        </c:forEach>
-                </tbody>
-                </table>
-            </div>
-        <br />
-    </body>
-    </html>
-
+<%--
+  Created by IntelliJ IDEA.
+  User: Shinelon
+  Date: 2019/10/25
+  Time: 10:46
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+--------------
+<c:forEach items="${cartlist}" var="cartlist">
+    <ul class="cart_list_td clearfix">
+        <li class="col01"><input type="checkbox" name="" checked></li>
+        <li class="col02"><img src="${cartlist.showGoods[0].imgpath}"></li>
+        <li class="col03">${cartlist.showGoods[0].gtitle}<br><em>${cartlist.showGoods[0].unitprice}</em></li>
+        <li class="col04">500g</li>
+        <li class="col05">${cartlist.showGoods[0].price}元</li>
+        <li class="col06">
+            <div class="num_add">
+                <a href="javascript:;" class="add fl">+</a>
+                <input type="text" class="num_show fl" value="${cartlist.number}">
+                <a href="javascript:;" class="minus fl">-</a>
+            </div>
+        </li>
+        <li class="col07">${cartlist.zongjia}元</li>
+        <li class="col08"><a href="javascript:;">删除</a></li>
+    </ul>
+</c:forEach>

@@ -29,23 +29,23 @@
             <div class="goods_banner fl"><img src="${goods.showGoods[0].bannerpath}"></div>
             <ul class="goods_list fl">
                 <li>
-                    <h4><a href="#">${goods.showGoods[0].gtitle}</a></h4>
-                    <a href="detail.html"><img src="${goods.showGoods[0].imgpath}"></a>
+                    <h4><a href="${pageContext.request.contextPath}/goods/goodsmessage?sendgtitle=${goods.showGoods[0].gtitle}">${goods.showGoods[0].gtitle}</a></h4>
+                    <a href="${pageContext.request.contextPath}/goods/goodsmessage?sendgtitle=${goods.showGoods[0].gtitle}"><img src="${goods.showGoods[0].imgpath}"></a>
                     <div class="prize">¥ ${goods.showGoods[0].price}</div>
                 </li>
                 <li>
-                    <h4><a href="#">${goods.showGoods[1].gtitle}</a></h4>
-                    <a href="detail.html"><img src="${goods.showGoods[1].imgpath}"></a>
+                    <h4><a href="${pageContext.request.contextPath}/goods/goodsmessage?sendgtitle=${goods.showGoods[1].gtitle}">${goods.showGoods[1].gtitle}</a></h4>
+                    <a href="${pageContext.request.contextPath}/goods/goodsmessage?sendgtitle=${goods.showGoods[1].gtitle}"><img src="${goods.showGoods[1].imgpath}"></a>
                     <div class="prize">¥ ${goods.showGoods[1].price}</div>
                 </li>
                 <li>
-                    <h4><a href="#">${goods.showGoods[2].gtitle}</a></h4>
-                    <a href="detail.html"><img src="${goods.showGoods[2].imgpath}"></a>
+                    <h4><a href="${pageContext.request.contextPath}/goods/goodsmessage?sendgtitle=${goods.showGoods[2].gtitle}">${goods.showGoods[2].gtitle}</a></h4>
+                    <a href="${pageContext.request.contextPath}/goods/goodsmessage?sendgtitle=${goods.showGoods[2].gtitle}"><img src="${goods.showGoods[2].imgpath}"></a>
                     <div class="prize">¥ ${goods.showGoods[2].price}</div>
                 </li>
                 <li>
-                    <h4><a href="#">${goods.showGoods[3].gtitle}</a></h4>
-                    <a href="detail.html"><img src="${goods.showGoods[3].imgpath}"></a>
+                    <h4><a href="${pageContext.request.contextPath}/goods/goodsmessage?sendgtitle=${goods.showGoods[3].gtitle}">${goods.showGoods[3].gtitle}</a></h4>
+                    <a href="${pageContext.request.contextPath}/goods/goodsmessage?sendgtitle=${goods.showGoods[3].gtitle}"><img src="${goods.showGoods[3].imgpath}"></a>
                     <div class="prize">¥ ${goods.showGoods[3].price}</div>
                 </li>
             </ul>

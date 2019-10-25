@@ -5,6 +5,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <%@ page isELIgnored="false" %>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
@@ -30,65 +31,9 @@
 	</style>
 </head>
 <body>
-	<div class="header_con">
-		<div class="header">
-			<div class="welcome fl">欢迎来到天天生鲜!</div>
-			<div class="fr">
-				<div class="login_info fl">
-					欢迎您：<em>张 山</em>
-				</div>
-				<div class="login_btn fl">
-					<a href="login.jsp">登录</a>
-					<span>|</span>
-					<a href="register.html">注册</a>
-				</div>
-				<div class="user_link fl">
-					<span>|</span>
-					<a href="user_center_info.html">用户中心</a>
-					<span>|</span>
-					<a href="cart.html">我的购物车</a>
-					<span>|</span>
-					<a href="user_center_order.html">我的订单</a>
-				</div>
-			</div>
-		</div>		
-	</div>
+<div id="list_top">
 
-	<div class="search_bar clearfix">
-		<a href="index.html" class="logo fl"><img src="images/logo.png"></a>
-		<div class="search_con fl">
-			<input type="text" class="input_text fl" name="" placeholder="搜索商品">
-			<input type="button" class="input_btn fr" name="" value="搜索">
-		</div>
-		<div class="guest_cart fr">
-			<a href="#" class="cart_name fl">我的购物车</a>
-			<div class="goods_count fl">1</div>
-		</div>
-	</div>
-
-	<div class="navbar_con">
-		<div class="navbar clearfix">
-			<div class="subnav_con fl">
-				<h1>全部商品分类</h1>	
-				<span></span>			
-				<ul class="subnav">
-					<li><a href="#" class="fruit">新鲜水果</a></li>
-					<li><a href="#" class="seafood">海鲜水产</a></li>
-					<li><a href="#" class="meet">猪牛羊肉</a></li>
-					<li><a href="#" class="egg">禽类蛋品</a></li>
-					<li><a href="#" class="vegetables">新鲜蔬菜</a></li>
-					<li><a href="#" class="ice">速冻食品</a></li>
-				</ul>
-			</div>
-			<ul class="navlist fl">
-				<li><a href="">首页</a></li>
-				<li class="interval">|</li>
-				<li><a href="">手机生鲜</a></li>
-				<li class="interval">|</li>
-				<li><a href="">抽奖</a></li>
-			</ul>
-		</div>
-	</div>
+</div>
 
 	<div class="breadcrumb">
 		<a href="#">全部分类</a>
@@ -127,31 +72,31 @@
 					<ul id="goods_ul" class="goods_type_list clearfix">
 						<c:forEach items="${fylist}" var="fylist" varStatus="sta">
 							<li id="goods_asc" class="goods_li">
-								<a href="detail.html"><img src="${fylist.imgpath}"></a>
-								<h4><a href="detail.html">${fylist.gtitle}</a></h4>
+								<a href="${pageContext.request.contextPath}/goods/goodsmessage?sendgtitle=${fylist.gtitle}"><img src="${fylist.imgpath}"></a>
+								<h4 id="sendgtitle"><a href="${pageContext.request.contextPath}/goods/goodsmessage?sendgtitle=${fylist.gtitle}">${fylist.gtitle}</a></h4>
 								<div class="operate">
 									<span class="prize">￥${fylist.price}</span>
 									<span class="unit">${fylist.unitprice}</span>
-									<a href="#" class="add_goods" title="加入购物车"></a>
+									<a href="${pageContext.request.contextPath}/cart/insertcart?gid=${fylist.gtitle}&number=1" class="add_goods" title="加入购物车"></a>
 								</div>
 							</li>
 
 						</c:forEach>
 
 
-						<c:forEach var="fylists"  items="${fylist}" varStatus="status">
-							<c:set var="startIndex" value="${fn:length(fylist) }"></c:set>
+<%--						<c:forEach var="fylists"  items="${fylist}" varStatus="status">--%>
+<%--							<c:set var="startIndex" value="${fn:length(fylist) }"></c:set>--%>
 
-						<li id="goods_desc" style="display: none;" class="goods_li">
-							<a href="detail.html"><img src="${fylist[startIndex - status.count].imgpath}"></a>
-							<h4><a href="detail.html">${fylist[startIndex - status.count].gtitle}</a></h4>
-							<div class="operate">
-								<span class="prize">￥${fylist[startIndex - status.count].price}</span>
-								<span class="unit">${fylist[startIndex - status.count].unitprice}</span>
-								<a href="#" class="add_goods" title="加入购物车"></a>
-							</div>
-						</li>
-						</c:forEach>
+<%--						<li id="goods_desc" style="display: none;" class="goods_li">--%>
+<%--							<a href="detail.html"><img src="${fylist[startIndex - status.count].imgpath}"></a>--%>
+<%--							<h4><a href="detail.html">${fylist[startIndex - status.count].gtitle}</a></h4>--%>
+<%--							<div class="operate">--%>
+<%--								<span class="prize">￥${fylist[startIndex - status.count].price}</span>--%>
+<%--								<span class="unit">${fylist[startIndex - status.count].unitprice}</span>--%>
+<%--								<a href="" class="add_goods" title="加入购物车"></a>--%>
+<%--							</div>--%>
+<%--						</li>--%>
+<%--						</c:forEach>--%>
 
 					</ul>
 				</div>
@@ -196,12 +141,10 @@
 		<p>CopyRight © 2016 北京天天生鲜信息技术有限公司 All Rights Reserved</p>
 		<p>电话：010-****888    京ICP备*******8号</p>
 	</div>
+<script type="text/javascript">
+	$("#list_top").load("${pageContext.request.contextPath}/cart/cartnum");
+</script>
 	<script type="text/javascript">
-		// var timestatus =
-		<%--var t1='<%=request.getAttribute("fylist")%>';--%>
-		<%--var t2 = [];--%>
-		// var num = 0;
-		// var timechange = "desc";
 		$("#time_change").click(
 				function () {
 					$("#time_change").attr("class","active");
@@ -269,9 +212,7 @@
 				}
 		)
 	</script>
-<%--<script type="text/javascript">--%>
-<%--	//$("#fylist").load("${pageContext.request.contextPath}/goods/fylist");--%>
-<%--</script>--%>
+
 	
 </body>
 </html>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+  dtd:docuemtn type definition  为当前提供约束
+     ：标签   属性   层级    顺序
+  Mapper文件，映射文件，替换DAO实现类
+-->
+<mapper namespace="com.qf.dao.CartDAO">
+    <!-- 当前 namespace中所有的查询，查询结构都会被二级缓存收纳 -->
+    <!--<cache type="org.apache.ibatis.cache.impl.PerpetualCache"/>-->
+    <!-- new MyCache("com.qianfeng.dao.UserDAO") -->
+    <!--    <cache type="com.qf.cache.MyCache"/>-->
+    <resultMap id="cartlistMap" type="Cart" autoMapping="true">
+        <id property="cid" column="cid"></id>
+        <collection property="showGoods" ofType="ShowGoods" autoMapping="true">
+            <id property="id" column="id"></id>
+        </collection>
+        <collection property="users" ofType="User" autoMapping="true">
+            <id property="userid" column="userid"></id>
+        </collection>
+    </resultMap>
+    <select id="selectCartByUsername" parameterType="string" resultMap="cartlistMap">
+        SELECT * FROM cart
+        LEFT JOIN `user` u
+        ON cart.uid = u.userid
+        RIGHT JOIN goodslist
+        ON cart.g_id = goodslist.id
+        WHERE u.userid = (
+                                SELECT userid FROM `user` WHERE username = #{username}
+                        )
+    </select>
+
+    <insert id="insertGoodsToCart" parameterType="Cart" >
+        insert into cart values (null,#{uid},#{number},#{g_id})
+    </insert>
+
+
+
+</mapper>

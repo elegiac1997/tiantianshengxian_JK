@@ -37,4 +37,9 @@ public class GoodServiceImpl implements GoodsService {
     public List<ShowGoods> selectAll_fruit() {
         return goodsDAO.selectAll_fruit();
     }
+
+    @Override
+    public List<ShowGoods> selectByGtitle(String gtitle) {
+        return goodsDAO.selectByGtitle(gtitle);
+    }
 }

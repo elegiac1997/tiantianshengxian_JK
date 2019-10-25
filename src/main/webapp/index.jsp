@@ -12,67 +12,24 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>天天生鲜-首页</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/main.css">
+    <%
+        String path = request.getContextPath();
+        String basePath = request.getScheme() + "://" + request.getServerName() + ":" +
+                request.getServerPort() + path + "/";
+    %>
+    <base href="<%=basePath%>">
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>css/reset.css">
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>css/main.css">
     <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js/slide.js"></script>
 </head>
 <body>
-<div class="header_con">
-    <div class="header">
-        <div class="welcome fl">
-            <shiro:user>
-                欢迎
-                <shiro:principal/>
-                来到天天生鲜!
-            </shiro:user>
-            </div>
-        <div class="fr">
-            <div class="login_info fl">
-                欢迎您：<em>张 山</em>
-            </div>
-            <div class="login_btn fl">
-                <a href="login.jsp">登录</a>
-                <span>|</span>
-                <a href="register.jsp">注册</a>
-            </div>
-            <div class="user_link fl">
-                <span>|</span>
-                <a href="user_center_info.jsp">用户中心</a>
-                <span>|</span>
-                <a href="cart.jsp">我的购物车</a>
-                <span>|</span>
-                <a href="user_center_order.jsp">我的订单</a>
-            </div>
-        </div>
-    </div>
+<div id="index_top">
+
 </div>
 
-<div class="search_bar clearfix">
-    <a href="index.jsp" class="logo fl"><img src="${pageContext.request.contextPath}/images/logo.png"></a>
-    <div class="search_con fl">
-        <input type="text" class="input_text fl" name="" placeholder="搜索商品">
-        <input type="button" class="input_btn fr" name="" value="搜索">
-    </div>
-    <div class="guest_cart fr">
-        <a href="#" class="cart_name fl">我的购物车</a>
-        <div class="goods_count fl" id="show_count">1</div>
-    </div>
-</div>
 
-<div class="navbar_con">
-    <div class="navbar">
-        <h1 class="fl">全部商品分类</h1>
-        <ul class="navlist fl">
-            <li><a href="">首页</a></li>
-            <li class="interval">|</li>
-            <li><a href="">手机生鲜</a></li>
-            <li class="interval">|</li>
-            <li><a href="">抽奖</a></li>
-        </ul>
-    </div>
-</div>
 
 <div class="center_con clearfix">
     <div id="goodsType_div">
@@ -117,6 +74,7 @@
 <script type="text/javascript">
     $("#goodsType_div").load("${pageContext.request.contextPath}/goods/typelist");
     $("#goods_list").load("${pageContext.request.contextPath}/goods/sgoods");
+    $("#index_top").load("${pageContext.request.contextPath}/cart/cartnum");
 </script>
 <script type="text/javascript">
     BCSlideshow('focuspic');

@@ -29,6 +29,12 @@
 <!--        <result property="creattime" column="creattime"></result>-->
     </collection>
 </resultMap>
+    <resultMap id="cartMap" type="Cart" autoMapping="true">
+        <id property="cid" column="cid"></id>
+        <collection property="showGoods" ofType="ShowGoods" autoMapping="true">
+            <id property="id" column="id"></id>
+        </collection>
+    </resultMap>
     <select id="selectALL" parameterType="integer" resultMap="goodsMap">
         select *
         from goods g
@@ -37,12 +43,21 @@
 				    ) gl
         on g.goodsid = gl.gid
     </select>
+    <select id="selectForCart" parameterType="string" resultMap="cartMap">
+
+    </select>
 
     <select id="selectA" resultType="GoodsList">
         select *
         from `goods` g
         left join `goodslist` gl
         on g.goodsid = gl.gid
+    </select>
+
+    <select id="selectByGtitle" resultType="ShowGoods">
+        select *
+        from goodslist
+        where gtitle = #{gtitle}
     </select>
 
     <select id="selectAll_fruit" resultType="ShowGoods">
